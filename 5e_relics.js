@@ -556,6 +556,10 @@ function buildSpellString(spelldata){
     return(output_string);
 }
 
+function getOrderedRelics(count = 10) {
+    return getRelics(count, "ordered");
+}
+
 function getRelics(count, order) {
 	var output_string_list = [];
     for (var i=0;i<count;i++) {

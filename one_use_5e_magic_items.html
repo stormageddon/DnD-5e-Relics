@@ -15,18 +15,32 @@ cursor:pointer
 
 <script type="text/javascript">
 $(document).ready(function() {
-    var relics = getOrderedRelics();
+    let params = parseParams();
+    let DEFAULT_NUM = 1
+    var relics = getRelics(params.n || DEFAULT_NUM, "ordered");
     $("div#itemlist").html("<ol><li>"+relics.join("<li>"));
     $("#ordered").bind("click",function(){
-        var relics = getOrderedRelics();
+        var relics = getOrderedRelics(params.n || DEFAULT_NUM);
         $("div#itemlist").html("<ol><li>"+relics.join("<li>"));
     });
     $("#unordered").bind("click",function(){
-        var relics = getRelics(100);
+        var relics = getRelics(params.n || DEFAULT_NUM, false);
         $("div#itemlist").html("<ol><li>"+relics.join("<li>"));
     });
 });
 
+var parseParams = function() {
+    let query = window.location.search.substring(1);
+    let qs = query.split("&");
+    let paramMap = {}
+    for (let i=0; i < qs.length; i++) {
+        let arg = qs[i].split("=");
+        console.log('arg: ' + arg);
+        paramMap[arg[0]] = arg[1];
+    }
+    console.log('paramMap', paramMap);
+    return paramMap;
+}
 </script>
 <div class="container">
 <div class="article">
