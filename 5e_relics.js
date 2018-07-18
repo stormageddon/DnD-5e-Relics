@@ -586,3 +586,25 @@ function getRelics(count, order) {
     }
     return(output_string_list);
 }
+
+let args = process.argv.slice(2);
+let config = {
+    numToGenerate: 10
+};
+
+for(let i = 0; i < args.length; i++) {
+    switch(args[i]) {
+        case '-n': {
+            console.log("passed num!");
+            let numToGen = parseInt(args[i + 1]);
+            if (!numToGen || typeof numToGen != 'number') {
+                throw new Error('-n requires a number');
+            }
+            else {
+                config.numToGenerate = numToGen
+            }
+        }
+    }
+}
+
+console.log(getRelics(config.numToGenerate, true));
