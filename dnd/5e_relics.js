@@ -561,9 +561,6 @@ function getOrderedRelics(count = 10) {
 }
 
 function getRelics(count, order) {
-    if (count > 100) {
-        count = 100;
-    }
 	var output_string_list = [];
     for (var i=0;i<count;i++) {
         if(i % adjective.length == 0) {shuffle(adjective);}
@@ -614,4 +611,4 @@ for(let i = 0; i < args.length; i++) {
     }
 }
 
-console.log(getRelics(config.numToGenerate, "ordered"));
+console.log(getRelics(config.numToGenerate, true));
