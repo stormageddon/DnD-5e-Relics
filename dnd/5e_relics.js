@@ -562,6 +562,9 @@ function getOrderedRelics(count = 10) {
 
 function getRelics(count, order) {
 	var output_string_list = [];
+    if(count > 100) {
+        count = 100;
+    }
     for (var i=0;i<count;i++) {
         if(i % adjective.length == 0) {shuffle(adjective);}
         if(i % origin.length == 0) {shuffle(origin);}
